@@ -29,7 +29,8 @@ function App() {
     <div className="container">
       <h1>Green - X</h1>
       {init ? <Router isLoggedIn={isLoggedIn} userObj={userObj}/> : "초기화중..."}
-      
+      <hr/>
+      <p>copyright alikerock All rights reserved.</p>
     </div>
   );
 }
