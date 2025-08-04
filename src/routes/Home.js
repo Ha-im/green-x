@@ -67,7 +67,7 @@ const Home = ({userObj})=>{
 
   useEffect(() => {
     getComments();
-  }, [comments]);
+  },[]);
   const onFileChange = (e)=>{
     // console.log(e.target.files[0]);
     // const {target:{files}} = e; // 구조분해할당 변수명은 files

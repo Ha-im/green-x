@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import { getAuth, signOut, updateProfile, } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { useState,useEffect } from 'react';
+import { useState,useEffect, useCallback } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { collection, query, where, getDocs,orderBy } from "firebase/firestore";
 import { db } from '../firebase';
@@ -28,7 +28,7 @@ const Profile = ()=>{
     });
   }
   //내가 쓴글 확인 
-  const getComments = async ()=>{ // 실시간으로 받아오고 있는것
+  const getComments = useCallback(async ()=>{ // 실시간으로 받아오고 있는것
     const q = query(collection(db, "comments"), where('uid', "==",user.uid ),orderBy('date',"desc"));
 
     const querySnapshot = await getDocs(q);
@@ -37,7 +37,7 @@ const Profile = ()=>{
       id:doc.id
     }))
     setComments(commentsArray);
-  }
+  },[])
   const updateLogo = async (e)=>{
     const file = e.target.files[0];
     const storageRef = ref(storage, `profile/${user.uid}`); // 3-1. 저장 경로 지정
@@ -56,7 +56,7 @@ const Profile = ()=>{
   useEffect(()=>{
     (user.photoURL !== null && user.photoURL.includes('firebases')) && setProfile(user.photoURL);
     getComments()
-  },[comments])
+  },[user.photoURL,getComments])
   return(
     <>
     <h2>Profile</h2>
