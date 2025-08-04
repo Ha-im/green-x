@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
-import { collection, addDoc,serverTimestamp,getDocs, onSnapshot, query,orderBy,limit } from "firebase/firestore"; 
+import { collection, addDoc,serverTimestamp, onSnapshot, query,orderBy,limit } from "firebase/firestore"; 
 import { db } from '../firebase';
 import ListGroup from 'react-bootstrap/ListGroup'
 import Comment from '../components/Comment';
@@ -67,7 +67,7 @@ const Home = ({userObj})=>{
 
   useEffect(() => {
     getComments();
-  }, []);
+  }, [comments]);
   const onFileChange = (e)=>{
     // console.log(e.target.files[0]);
     // const {target:{files}} = e; // 구조분해할당 변수명은 files

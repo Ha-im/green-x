@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { useState,useEffect } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { collection, query, where, getDocs,onSnapshot,orderBy } from "firebase/firestore";
+import { collection, query, where, getDocs,orderBy } from "firebase/firestore";
 import { db } from '../firebase';
 import Comment from '../components/Comment';
 
@@ -52,10 +52,11 @@ const Profile = ()=>{
     })
     console.log(user)
   }
+  // eslint-disable-next-line 
   useEffect(()=>{
     (user.photoURL !== null && user.photoURL.includes('firebases')) && setProfile(user.photoURL);
     getComments()
-  },[])
+  },[comments])
   return(
     <>
     <h2>Profile</h2>

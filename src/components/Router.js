@@ -3,7 +3,6 @@ import Home from "../routes/Home";
 import Auth from "../routes/Auth";
 import Menu from "./Nav";
 import Profile from "../routes/Profile";
-import { useState } from "react";
 
 const Router = ({isLoggedIn,userObj})=>{
   return(

@@ -1,6 +1,5 @@
 import Router from './Router';
 import { useState } from "react";
-import { authService } from '../firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
