@@ -37,7 +37,7 @@ const Profile = ()=>{
       id:doc.id
     }))
     setComments(commentsArray);
-  },[])
+  },[user.uid])
   const updateLogo = async (e)=>{
     const file = e.target.files[0];
     const storageRef = ref(storage, `profile/${user.uid}`); // 3-1. 저장 경로 지정
